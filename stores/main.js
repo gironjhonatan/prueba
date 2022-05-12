@@ -39,7 +39,7 @@ doc.addEventListener("submit", async e => {
         e.preventDefault();
 
         if (!e.target.id.value) {
-            //crear post
+            //post
             try {
                 let opj = {
                     method: "POST",
@@ -75,7 +75,7 @@ doc.addEventListener("submit", async e => {
                         item: e.target.item.value
                     })
                 },
-                resp = await fetch( `https://test-api-met.herokuapp.com/stores/$e.target.id.value`,obj),
+                resp = await fetch( `https://test-api-met.herokuapp.com/stores/${e.target.id.value}`,obj),
                 json = await resp.json();
 
                 if(!resp.ok) throw {status: resp.status, statusText: resp.status}
