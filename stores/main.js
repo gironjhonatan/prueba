@@ -27,7 +27,7 @@ const get = async () => {
 
         $tabla.querySelector("tbody").appendChild($fragment);
     } catch (error) {
-        let mensaje = error.statusText || "ahy un error";
+        let mensaje = error.statusText || "hay un error";
         $tabla.insertAdjacentHTML("afterend", `<p> error ${error.status}: ${mensaje} </p>`);
     }   
 }
@@ -53,8 +53,35 @@ doc.addEventListener("submit", async e => {
                 },
                 resp = await fetch("https://test-api-met.herokuapp.com/stores", opj),
                 json = await resp.json();
+
+                if(!resp.ok) throw {status: resp.status, statusText: resp.statusText};
+
+                location.reload();
+
             } catch (error) {
-                
+                let mensaje = error.statusText || "hay un error";
+                $formulario.insertAdjacentHTML("afterend", `<p> error ${error.status}: ${mensaje} </p>`);
+            }
+        }else{
+            //put
+            try {
+                let obj = {
+                    method: "PUT",
+                    headers: {
+                        "Contente-type": "application/json; charset=utf-8"
+                    },
+                    body: JSON.stringify({
+                        nombre: e.target.nombre.value,
+                        item: e.target.item.value
+                    })
+                },
+                resp = await fetch( `https://test-api-met.herokuapp.com/stores/$e.target.id.value`,obj),
+                json = await resp.json();
+
+                if(!resp.ok) throw {status: resp.status, statusText: resp.status}
+            } catch (error) {
+                let mensaje = error.statusText || "hay un error";
+                $formulario.insertAdjacentHTML("afterend", `<p> error ${error.status}: ${mensaje} </p>`);
             }
         }
     }
