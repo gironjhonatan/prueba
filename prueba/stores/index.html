@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Api</title>
+</head>
+<body>
+   
+    <section class="crud">
+        <article>
+            <h2 class="c-titulo">agregar tienda</h2>
+            <form class="c-formulario">
+                <input type="text" name="nombre" placeholder="nombre" required>
+                <br> <br>
+                <input type="text" name="item" placeholder="item" required>
+                <br> <br>
+                <input type="submit" value="enviar">
+                <input type="hidden" name="id">
+            </form>
+        </article>
+        <article class="article">
+            <h2>tiendas</h2>
+            <table class="c-tabla">
+                <thead>
+                    <tr>
+                        <th>nombre</th>
+                        <th>items</th>
+                        <th>acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </article>
+    </section>
+    <template id="c-template">
+        <tr>
+            <td class="name"></td>
+            <td class="items"></td>
+            <td>
+                <button class="editar"></button>
+                <button class="eliminar"></button>
+            </td>
+        </tr>
+    </template>
+    <script src="main.js"></script>
+</body>
+</html>
